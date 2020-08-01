@@ -1,11 +1,11 @@
 let locationNameShow = document.querySelector(".location-name"),
-    showTempConditon = document.querySelector(".condition-name"),
+    showTempCondition = document.querySelector(".condition-name"),
     showTempDegree = document.querySelector(".today-temp"),
     showFeelsLike = document.querySelector(".feels-like"),
     showSunRise = document.querySelector(".sun-rise"),
     showSunSet = document.querySelector(".sun-set"),
     showCloud = document.querySelector(".cloudiness-persent"),
-    showHumidity = document.querySelector(".humidity-persent"),
+    showHumidity = document.querySelector(".humidity-percent"),
     showPressure = document.querySelector(".pressure-level"),
     showWind = document.querySelector(".wind-level"),
     showConditionIcon = document.querySelector(".condition-icon"),
@@ -49,10 +49,15 @@ function showPosition(position) {
 
 
                     showTempDegree.innerHTML = weatherInfo.current.temp + "° C";
-                    showTempConditon.innerHTML = weatherInfo.current.weather[0].main;
+                    showTempCondition.innerHTML = weatherInfo.current.weather[0].main;
                     if (compareTwoCondition !== 0) {
                         showConditionDesc.style.marginTop = "-10px";
                         showConditionDesc.innerHTML = weatherInfo.current.weather[0].description;
+
+                    }
+                    else{
+                        showConditionDesc.style.marginTop = "0px";
+                        showConditionDesc.innerHTML = '';
 
                     }
                     showFeelsLike.innerHTML = ", feels " + weatherInfo.current.feels_like + "° C";
@@ -67,7 +72,7 @@ function showPosition(position) {
 
 
 
-                    //next eight days weather forcast
+                    //next eight days weather forecast
 
                     let showWeatherForNextDays = document.querySelector(".weather-next-days"),
                         showUpComingArea = document.querySelector('.next-eight-days-weather-info'),
