@@ -1,0 +1,256 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Teko&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varta:wght@300&display=swap');
+
+html,body{
+    height: 100%;
+}
+  
+.container-div-color{
+    background-color: #3f3f3f !important;
+    color: #c6c6c6;
+    font-family: 'Teko', sans-serif;
+    font-size: 18px;
+    width: 100%;
+    min-height: 100%;
+}
+
+.today-time{
+    font-size: 25px;
+    color: white;
+    margin-right: 15px;
+    font-family: 'Acme', sans-serif;
+}
+
+.today-date{
+    font-size: 25px;
+    color: white;
+    font-family: 'Acme', sans-serif;
+}
+
+.today-name{
+    font-size: 20px;
+    color: white;
+    font-family: 'Acme', sans-serif;
+
+}
+
+.time-date-area{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+    
+}
+
+.line{
+    border-top: 1px solid #dbdbdb;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.search-box{
+    text-align: center;
+}
+
+.location-name{
+    font-size: 25px;
+    color: white;
+    margin-right: 15px;
+    font-weight: Bold;
+    font-family: 'Acme', sans-serif;
+
+}
+
+.humidity-persent, .pressure-level, .cloudiness-persent, .wind-level{
+    color: white;
+}
+
+.condition-name{
+    font-size: 20px;
+    color: white;
+    font-weight: Bold;
+    font-family: 'Acme', sans-serif;
+
+}
+
+.sun-rise, .sun-set, .today-temp{
+    color: white;
+}
+
+.today-temp{
+    margin-left:5px;
+}
+
+.condition-icon{
+    height: 35px;
+    width: 35px;
+    margin-right: 10px;
+    background-color: #a8a8a8;
+    border-radius: 50% ;
+}
+
+.weather-conditions{
+    margin-top: 10px;
+
+}
+
+.weather-details{
+    margin-top: 10px;
+    margin-right: -10px !important;
+
+}
+
+
+.list-card{
+    border: 1px solid #6b6b6b;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px 5px 10px 5px;
+    background-color: #493b3b;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+
+.icon-daily-weathers{
+    height: 30px;
+    width: 30px;
+    margin-right: 5px;
+    background-color: #a8a8a8;
+    border-radius: 50% ;
+
+}
+
+.show-center{
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.daily-weather-condition-desc, .week-day-name{
+    font-family: 'Varta', sans-serif;
+    font-size: 15px;
+}
+
+.daily-weather-condition{
+    font-size: 20px;
+
+}
+
+.daily-temp-min{
+    margin-right: 10px;
+}
+
+
+.upcoming-weather{
+    font-size: 18px;
+    font-family: 'Varta', sans-serif;
+    text-align: center;
+    margin-top: 10px;
+}
+
+ a{
+    font-size: 18px;
+    font-family: 'Varta', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+
+}
+
+a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.label-capsul{
+    background-color: #470d0d;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+
+}
+
+.weather-provider{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.label-capsul:hover{
+    background-color: #722d2d;
+
+}
+
+.location-warn{
+    font-size: 12px;
+    font-family: 'Varta', sans-serif;
+    color: red;
+
+}
+
+.feels-like{
+    font-size: 12px;
+    font-family: 'Varta', sans-serif;
+
+}
+
+.next-eight-days-weather-info{
+    display: none;
+}
+.search-container{
+    overflow: hidden;
+    margin-top: 10px;
+    
+
+}
+
+
+.search-div{
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #564545;
+}
+
+.suggestions{
+    color: white;
+}
+
+.input-text{
+    border: none;
+    
+}
+
+.suggestions > div {
+    padding: 5px;
+    font-size: 13px;
+    text-align: left;
+    font-family: 'Varta', sans-serif;
+    border-top: 1px solid #666;
+}
+
+.suggestions > div:hover{
+    background-color: #1e4dd4;
+}
+
+.search-btn{
+    background-color: #3f3f3f !important;
+}
+
+.condition-desc{
+    font-size: 11px;
+    margin-left: 47px;
+    font-family: 'Varta', sans-serif;
+
+}
+
+.reload-icon{
+    float: left;
+    font-size: 20px;
+}

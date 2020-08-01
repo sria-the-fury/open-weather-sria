@@ -1,0 +1,8 @@
+
+.icon-reload:before { content: '\e800'; } /* '' */
+.icon-cloud-sun:before { content: '\e801'; } /* '' */
+.icon-sun:before { content: '\e802'; } /* '' */
+.icon-sun-set:before { content: '\e803'; } /* '' */
+.icon-sunrise:before { content: '\e804'; } /* '' */
+.icon-windy:before { content: '\e805'; } /* '' */
+.icon-cloud-only:before { content: '\e806'; } /* '' */

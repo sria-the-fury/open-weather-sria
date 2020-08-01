@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="fontEllo/css/fontello.css" type="text/css">
+
+    <title>Open weather Api</title>
+</head>
+
+<body>
+    <div class="container container-div-color">
+        <div class="row">
+            <div class="col-12 time-date-area">
+                <i class="icon-reload reload-icon" id="reload-button"></i><span class="location-name-label">Current Location : </span>
+                <div class="location-name">Give Location Access
+                    <div class="location-warn">
+                        <small>Loaction access must be high accuracy in your device or browser.</small>
+                    </div>
+                </div>
+                <div class="today-time" id="todayDate"></div>
+                <span class="today-date"> </span>
+                <span class="today-name"></span>
+
+
+            </div>
+
+        </div>
+
+        <div class="row line search-box">
+            
+            <div class="col-12 search-container">
+                <div>Search Places</div>
+                
+                <div class="search-div">
+                        <input type="text" class="form-control input-text" placeholder="Enter place name"
+                            id="search-input">
+                        
+                    <div class="suggestions">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row weather-info-details line">
+
+            <div class="col-6 weather-contions">
+                <div class="weather-conditions-name">
+                    <div class="weather-conditions">
+                        <img class="condition-icon">
+                        <span class="condition-name"></span>
+                        <div class="condition-desc"></div>
+
+                    </div>
+
+                    <span class="today-temp"></span><span class="feels-like"></span>
+                </div>
+                <div class="sun-rise-set">
+                    <span class="sun-rise-label"><i class="icon-sunrise"></i>Sunrise : </span>
+                    <span class="sun-rise"></span>
+
+                    <div>
+                        <span class="sun-set-label"><i class="icon-sun-set"></i>Sunset : </span>
+                        <span class="sun-set"></span>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="weather-details">
+                    <div class="cloudiness">
+                        <span class="cloudiness-label">Cloudiness : </span>
+                        <span class="cloudiness-persent"></span>
+                    </div>
+                    <div class="humidity">
+                        <span class="humidity-label">Humidity : </span>
+                        <span class="humidity-persent"></span>
+                    </div>
+                    <div class="pressure">
+                        <span class="pressure-label">Pressure : </span>
+                        <span class="pressure-level"></span>
+
+                    </div>
+                    <div class="wind">
+                        <span class="wind-label">Wind : </span>
+                        <span class="wind-level"></span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row next-eight-days-weather-info line">
+            <div class="col-12">
+                <div class="upcoming-weather">
+                    Upcoming Seven Days weather Forcast
+                </div>
+                <div id="cardSlider" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner weather-next-days">
+
+                    </div>
+                    <a class="carousel-control-prev" href="#cardSlider" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#cardSlider" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row weather-provider-details line">
+            <div class="col-6">
+
+                <div class="weather-provider">
+                    <div style="text-align: center;">
+                        developed-by :
+                    </div>
+                    <a href="https://github.com/sria-the-fury" class="label-capsul" target="_blank">sria-the-fury</a>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="weather-provider">
+                    <div style="text-align: center;">
+                        weather provider :
+                    </div>
+                    <a href="https://openweathermap.org/" class="label-capsul" target="_blank">OpenWeather</a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+    <script src="js/geolocation_weather.js"></script>
+    <script src="js/search_weather.js"></script>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/7.17.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/7.17.1/firebase-analytics.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+
+
+</body>
+
+</html>
