@@ -21,8 +21,8 @@ searchInput.addEventListener('keyup', function () {
 
                     let name = getData.display_name.split(','),
                         country = name.slice(-1),
-                        displayName = name[0] + "," + country;
-                    eachCountryInfo = {
+                        displayName = name[0] + "," + country,
+                        eachCountryInfo = {
                         placeName: displayName,
                         latitude: getData.lat,
                         longitude: getData.lon
@@ -64,13 +64,13 @@ searchInput.addEventListener('keyup', function () {
 
 
                         let locationNameShow = document.querySelector(".location-name"),
-                            showTempConditon = document.querySelector(".condition-name"),
+                            showTempCondition = document.querySelector(".condition-name"),
                             showTempDegree = document.querySelector(".today-temp"),
                             showFeelsLike = document.querySelector(".feels-like"),
                             showSunRise = document.querySelector(".sun-rise"),
                             showSunSet = document.querySelector(".sun-set"),
                             showCloud = document.querySelector(".cloudiness-persent"),
-                            showHumidity = document.querySelector(".humidity-persent"),
+                            showHumidity = document.querySelector(".humidity-percent"),
                             showPressure = document.querySelector(".pressure-level"),
                             showWind = document.querySelector(".wind-level"),
                             showConditionDesc = document.querySelector('.condition-desc'),
@@ -101,10 +101,14 @@ searchInput.addEventListener('keyup', function () {
 
 
                                 showTempDegree.innerHTML = weatherInfo.current.temp + "° C";
-                                showTempConditon.innerHTML = weatherInfo.current.weather[0].main;
+                                showTempCondition.innerHTML = weatherInfo.current.weather[0].main;
                                 if (compareTwoCondition !== 0) {
                                     showConditionDesc.style.marginTop = "-10px";
                                     showConditionDesc.innerHTML = weatherInfo.current.weather[0].description;
+
+                                } else{
+                                    showConditionDesc.style.marginTop = "0px";
+                                    showConditionDesc.innerHTML = '';
 
                                 }
                                 showFeelsLike.innerHTML = ", feels " + weatherInfo.current.feels_like + "° C";
@@ -138,7 +142,7 @@ searchInput.addEventListener('keyup', function () {
                                         weekDayName = getDayName[dailyDate.getDay()],
                                         getDailyWeatherIcon = 'https://openweathermap.org/img/wn/' + dailyWeatherConditionIcon + '@2x.png',
                                         createInnerChild = '';
-                                    todayDate.setDate(todayDate.getDate() + 1);// assisgn todayDate as tomorrowDate
+                                    todayDate.setDate(todayDate.getDate() + 1);// assign todayDate as tomorrowDate
 
                                     createInnerChild = `
                         <div id = "card-${weekDayName}" class= "carousel-item ${todayDate.getDate() === dailyDate.getDate() ? 'active' : ''} list-card">

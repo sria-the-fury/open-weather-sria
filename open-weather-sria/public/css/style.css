@@ -62,7 +62,7 @@ html,body{
 
 }
 
-.humidity-persent, .pressure-level, .cloudiness-persent, .wind-level{
+.humidity-percent, .pressure-level, .cloudiness-persent, .wind-level{
     color: white;
 }
 
@@ -168,7 +168,7 @@ a:hover{
     color: white;
 }
 
-.label-capsul{
+.label-capsule{
     background-color: #470d0d;
     padding: 5px 10px 5px 10px;
     border-radius: 30px;
@@ -181,7 +181,7 @@ a:hover{
     text-align: center;
 }
 
-.label-capsul:hover{
+.label-capsule:hover{
     background-color: #722d2d;
 
 }
@@ -253,4 +253,11 @@ a:hover{
 .reload-icon{
     float: left;
     font-size: 20px;
+}
+
+.machine-time{
+    font-size: 11px;
+    font-family: 'Varta', sans-serif;
+    display: none;
+
 }
