@@ -7,10 +7,7 @@ let timeShowDiv = document.querySelector(".today-time"),
     dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     setInterval(function() {
         let refreshDate = new Date();
-        let refreshTime =  timeShowDiv.innerHTML = refreshDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
-        $('#todayDate').text(
-           refreshTime
-                );
+        timeShowDiv.innerHTML = refreshDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
     }, 1000);
 
     dateShowDiv.innerHTML = currentDate.getDate()+" "+ months[currentDate.getMonth()]+ " " + currentDate.getFullYear();
