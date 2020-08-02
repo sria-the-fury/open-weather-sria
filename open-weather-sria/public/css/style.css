@@ -22,6 +22,15 @@ html,body{
     font-family: 'Acme', sans-serif;
 }
 
+.today-time-zone{
+    display: none;
+    font-size: 25px;
+    color: white;
+    margin-right: 15px;
+    font-family: 'Acme', sans-serif;
+
+}
+
 .today-date{
     font-size: 25px;
     color: white;
@@ -67,7 +76,7 @@ html,body{
 }
 
 .condition-name{
-    font-size: 20px;
+    font-size: 18px;
     color: white;
     font-weight: Bold;
     font-family: 'Acme', sans-serif;
@@ -245,7 +254,8 @@ a:hover{
 
 .condition-desc{
     font-size: 11px;
-    margin-left: 47px;
+    margin-left: 40px;
+    -webkit-line-clamp: 1;
     font-family: 'Varta', sans-serif;
 
 }
@@ -261,3 +271,10 @@ a:hover{
     display: none;
 
 }
+
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+    display: block;
+    color: #564545;
+}
+

@@ -19,14 +19,12 @@ searchInput.addEventListener('keyup', function () {
 
                 data.forEach((getData) => {
 
-                    let name = getData.display_name.split(','),
-                        country = name.slice(-1),
-                        displayName = name[0] + "," + country,
+                    let displayName = getData.display_name;
                         eachCountryInfo = {
-                        placeName: displayName,
-                        latitude: getData.lat,
-                        longitude: getData.lon
-                    }
+                            placeName: displayName,
+                            latitude: getData.lat,
+                            longitude: getData.lon
+                        }
 
 
                     countryInfoArray.push(eachCountryInfo);
@@ -37,8 +35,6 @@ searchInput.addEventListener('keyup', function () {
                 countryInfoArray.shift();
 
 
-
-
                 const suggestions = countryInfoArray.filter(function (name) {
 
                     return name.placeName.toLowerCase().startsWith(input);
@@ -46,8 +42,11 @@ searchInput.addEventListener('keyup', function () {
 
                 suggestions.forEach((suggested) => {
                     const suggestionsInnerDiv = document.createElement('div');
-                
-                    suggestionsInnerDiv.setAttribute("data-placeName", suggested.placeName);
+                    let name = suggested.placeName.split(','),
+                        countryName = name.slice(-1),
+                        areaName = name[0]+", "+countryName;
+
+                    suggestionsInnerDiv.setAttribute("data-placeName", areaName);
                     suggestionsInnerDiv.setAttribute("data-lat", suggested.latitude);
                     suggestionsInnerDiv.setAttribute("data-lon", suggested.longitude);
                     let giveIt2Inpt = suggestionsInnerDiv.innerHTML = suggested.placeName;
@@ -56,7 +55,7 @@ searchInput.addEventListener('keyup', function () {
                         let getLat = a.getAttribute('data-lat'),
                             getLon = a.getAttribute('data-lon'),
                             getPlaceName = a.getAttribute('data-placeName');
-                    
+
 
 
                         searchInput.value = giveIt2Inpt;
@@ -93,11 +92,34 @@ searchInput.addEventListener('keyup', function () {
                                     convertPressure = weatherInfo.current.pressure / 33.863886666667,
                                     convertWindSpeed2Kmh = weatherInfo.current.wind_speed * 3.01,
                                     getUrlIcon = 'https://openweathermap.org/img/wn/' + weatherInfo.current.weather[0].icon + '@2x.png',
-                                    sunRiseTime = getSunRiseData.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
-                                    sunSetTime = getSunSetData.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
+
                                     getWeatherMainString = weatherInfo.current.weather[0].main.toLowerCase(),
                                     getWeatherDescString = weatherInfo.current.weather[0].description.toLowerCase(),
-                                    compareTwoCondition = getWeatherMainString.localeCompare(getWeatherDescString);
+                                    compareTwoCondition = getWeatherMainString.localeCompare(getWeatherDescString),
+                                    getSunRiseTime = getSunRiseData.toLocaleString('en-US', {timeZone: weatherInfo.timezone, hour: 'numeric', minute: 'numeric', hour12: true}),
+                                    getSunSetTime = getSunSetData.toLocaleString('en-US', {timeZone: weatherInfo.timezone, hour: 'numeric', minute: 'numeric', hour12: true}),
+
+                                    timeShowDiv = document.querySelector(".today-time"),
+                                    timeZoneShowDiv = document.querySelector(".today-time-zone"),
+                                    dateShowDiv = document.querySelector(".today-date"),
+                                    todayNameShow = document.querySelector(".today-name"),
+                                    currentDate = new Date(),
+                                    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                                    dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+                                timeShowDiv.style.display = 'none';
+                                timeZoneShowDiv.style.display = 'block';
+                                setInterval(function() {
+                                    let refreshTime =  timeShowDiv.innerHTML = new Date().toLocaleString('en-US',{timeZone: weatherInfo.timezone, hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true});
+                                    $('#todayDateZone').text(
+                                        refreshTime
+                                    );
+                                }, 1000);
+
+                                dateShowDiv.innerHTML = currentDate.getUTCDate()+" "+ months[currentDate.getUTCMonth()]+ " " + currentDate.getUTCFullYear();
+                                todayNameShow.innerHTML = "( "+dayName[currentDate.getUTCDay()]+ " )";
+
+
 
 
                                 showTempDegree.innerHTML = weatherInfo.current.temp + "° C";
@@ -112,8 +134,8 @@ searchInput.addEventListener('keyup', function () {
 
                                 }
                                 showFeelsLike.innerHTML = ", feels " + weatherInfo.current.feels_like + "° C";
-                                showSunRise.innerHTML = sunRiseTime;
-                                showSunSet.innerHTML = sunSetTime;
+                                showSunRise.innerHTML = getSunRiseTime;
+                                showSunSet.innerHTML = getSunSetTime;
                                 showCloud.innerHTML = weatherInfo.current.clouds + "%";
                                 showHumidity.innerHTML = weatherInfo.current.humidity + "%";
                                 showPressure.innerHTML = convertPressure.toFixed(1) + " inHg";
@@ -145,32 +167,32 @@ searchInput.addEventListener('keyup', function () {
                                     todayDate.setDate(todayDate.getDate() + 1);// assign todayDate as tomorrowDate
 
                                     createInnerChild = `
-                        <div id = "card-${weekDayName}" class= "carousel-item ${todayDate.getDate() === dailyDate.getDate() ? 'active' : ''} list-card">
-                        <div class="show-center">
-    
-                        <div>
-                        <span class ="date">${date}</span>
-                        <span class ="week-day-name">(${todayDate.getDate() === dailyDate.getDate() ? 'Tomorrow' : weekDayName})</span>
-                        </div> 
-    
-                        <div>
-                        <span><img src= "${getDailyWeatherIcon}" class="icon-daily-weathers"></span>
-                        <span class ="daily-weather-condition">${dailyWeatherCondition}</span>
-                        </div> 
-    
-                        <div>
-                        <span class ="daily-weather-condition-desc">( ${dailyWeatherConditionDes} )</span>
-                        </div> 
-    
-                        <div>
-                        <span class ="daily-temp-min">↓${dailyTempMin}° C</span>
-                        <span class ="daily-temp-max">↑${dailyTempMax}° C</span>
-                        </div> 
-                        </div>
-                       
-                        </div>
+                                        <div id = "card-${weekDayName}" class= "carousel-item ${todayDate.getDate() === dailyDate.getDate() ? 'active' : ''} list-card">
+                                        <div class="show-center">
                     
-                    `;
+                                        <div>
+                                        <span class ="date">${date}</span>
+                                        <span class ="week-day-name">(${todayDate.getDate() === dailyDate.getDate() ? 'Tomorrow' : weekDayName})</span>
+                                        </div> 
+                    
+                                        <div>
+                                        <span><img src= "${getDailyWeatherIcon}" class="icon-daily-weathers"></span>
+                                        <span class ="daily-weather-condition">${dailyWeatherCondition}</span>
+                                        </div> 
+                    
+                                        <div>
+                                        <span class ="daily-weather-condition-desc">( ${dailyWeatherConditionDes} )</span>
+                                        </div> 
+                    
+                                        <div>
+                                        <span class ="daily-temp-min">↓${dailyTempMin}° C</span>
+                                        <span class ="daily-temp-max">↑${dailyTempMax}° C</span>
+                                        </div> 
+                                        </div>
+                                       
+                                        </div>
+                                    
+                                    `;
 
                                     createInnerChildValue += createInnerChild;
 
