@@ -16,19 +16,10 @@ html,body{
 }
 
 .today-time{
-    font-size: 25px;
+    font-size: 22px;
     color: white;
     margin-right: 15px;
     font-family: 'Acme', sans-serif;
-}
-
-.today-time-zone{
-    display: none;
-    font-size: 25px;
-    color: white;
-    margin-right: 15px;
-    font-family: 'Acme', sans-serif;
-
 }
 
 .today-date{
@@ -38,7 +29,7 @@ html,body{
 }
 
 .today-name{
-    font-size: 20px;
+    font-size: 18px;
     color: white;
     font-family: 'Acme', sans-serif;
 
@@ -46,7 +37,7 @@ html,body{
 
 .time-date-area{
     text-align: center;
-    font-size: 30px;
+    font-size: 22px;
     margin-top: 20px;
     
 }
@@ -63,7 +54,7 @@ html,body{
 }
 
 .location-name{
-    font-size: 25px;
+    font-size: 22px;
     color: white;
     margin-right: 15px;
     font-weight: Bold;

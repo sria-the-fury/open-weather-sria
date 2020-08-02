@@ -100,7 +100,6 @@ searchInput.addEventListener('keyup', function () {
                                     getSunSetTime = getSunSetData.toLocaleString('en-US', {timeZone: weatherInfo.timezone, hour: 'numeric', minute: 'numeric', hour12: true}),
 
                                     timeShowDiv = document.querySelector(".today-time"),
-                                    timeZoneShowDiv = document.querySelector(".today-time-zone"),
                                     dateShowDiv = document.querySelector(".today-date"),
                                     todayNameShow = document.querySelector(".today-name"),
                                     currentDate = new Date(),
@@ -108,18 +107,10 @@ searchInput.addEventListener('keyup', function () {
                                     dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
                                 timeShowDiv.style.display = 'none';
-                                timeZoneShowDiv.style.display = 'block';
-                                setInterval(function() {
-                                    let refreshTime =  timeShowDiv.innerHTML = new Date().toLocaleString('en-US',{timeZone: weatherInfo.timezone, hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true});
-                                    $('#todayDateZone').text(
-                                        refreshTime
-                                    );
-                                }, 1000);
+
 
                                 dateShowDiv.innerHTML = currentDate.getUTCDate()+" "+ months[currentDate.getUTCMonth()]+ " " + currentDate.getUTCFullYear();
                                 todayNameShow.innerHTML = "( "+dayName[currentDate.getUTCDay()]+ " )";
-
-
 
 
                                 showTempDegree.innerHTML = weatherInfo.current.temp + "° C";
