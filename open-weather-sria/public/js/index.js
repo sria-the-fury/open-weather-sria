@@ -1,7 +1,6 @@
 let timeShowDiv = document.querySelector(".today-time"),
     dateShowDiv = document.querySelector(".today-date"),
     todayNameShow = document.querySelector(".today-name"),
-    todayMachineTime = document.querySelector(".machine-time"),
     reloadButton = document.querySelector("#reload-button"),
     currentDate = new Date(),
     months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -14,7 +13,6 @@ let timeShowDiv = document.querySelector(".today-time"),
                 );
     }, 1000);
 
-   todayMachineTime.style.display = 'block';
     dateShowDiv.innerHTML = currentDate.getDate()+" "+ months[currentDate.getMonth()]+ " " + currentDate.getFullYear();
     todayNameShow.innerHTML = "( "+dayName[currentDate.getDay()]+ " )";
 
