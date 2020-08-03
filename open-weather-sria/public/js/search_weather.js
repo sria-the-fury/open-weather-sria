@@ -99,14 +99,11 @@ searchInput.addEventListener('keyup', function () {
                                     getSunRiseTime = getSunRiseData.toLocaleString('en-US', {timeZone: weatherInfo.timezone, hour: 'numeric', minute: 'numeric', hour12: true}),
                                     getSunSetTime = getSunSetData.toLocaleString('en-US', {timeZone: weatherInfo.timezone, hour: 'numeric', minute: 'numeric', hour12: true}),
 
-                                    timeShowDiv = document.querySelector(".today-time"),
                                     dateShowDiv = document.querySelector(".today-date"),
                                     todayNameShow = document.querySelector(".today-name"),
                                     currentDate = new Date(),
                                     months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
                                     dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-
-                                timeShowDiv.style.display = 'none';
 
 
                                 dateShowDiv.innerHTML = currentDate.getUTCDate()+" "+ months[currentDate.getUTCMonth()]+ " " + currentDate.getUTCFullYear();
@@ -136,7 +133,7 @@ searchInput.addEventListener('keyup', function () {
 
 
 
-                                //next eight days weather forcast
+                                //next eight days weather forecast
 
                                 let showWeatherForNextDays = document.querySelector(".weather-next-days"),
                                     createInnerChildValue = '';
