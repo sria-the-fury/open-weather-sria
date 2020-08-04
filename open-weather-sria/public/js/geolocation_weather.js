@@ -8,6 +8,7 @@ let locationNameShow = document.querySelector(".location-name"),
     showHumidity = document.querySelector(".humidity-percent"),
     showPressure = document.querySelector(".pressure-level"),
     showWind = document.querySelector(".wind-level"),
+    showUVI = document.querySelector(".uvi-index"),
     showConditionIcon = document.querySelector(".condition-icon"),
     showConditionDesc = document.querySelector('.condition-desc'),
     monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -24,6 +25,8 @@ function showPosition(position) {
         .then(response => response.json())
         .then(data => {
 
+            console.log("Data=>",data);
+
             let districtName = data.address.state_district.split(' '),
                 LocationName = data.address.neighbourhood ? data.address.neighbourhood : districtName[0],
                 stateName = data.address.state.split(' '),
@@ -35,6 +38,7 @@ function showPosition(position) {
             fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=' + longitude + '&units=metric&appid=42f55767c7bb1cbd240aeefce58a66e6')
                 .then(response => response.json())
                 .then(weatherInfo => {
+                    console.log("weatherInfo=>",weatherInfo);
 
                     let getSunRiseData = new Date((weatherInfo.current.sunrise) * 1000),
                         getSunSetData = new Date((weatherInfo.current.sunset) * 1000),
@@ -67,6 +71,7 @@ function showPosition(position) {
                     showHumidity.innerHTML = weatherInfo.current.humidity + "%";
                     showPressure.innerHTML = convertPressure.toFixed(1) + " inHg";
                     showWind.innerHTML = convertWindSpeed2Kmh.toFixed(1) + " km/h";
+                    showUVI.innerHTML = weatherInfo.current.uvi;
                     showConditionIcon.setAttribute("src", getUrlIcon);
 
 
@@ -92,11 +97,10 @@ function showPosition(position) {
                             dailyDate = new Date(daily.dt * 1000),
                             date = dailyDate.getDate() + " " + monthName[dailyDate.getMonth()],
                             weekDayName = getDayName[dailyDate.getDay()],
-                            getDailyWeatherIcon = 'https://openweathermap.org/img/wn/' + dailyWeatherConditionIcon + '@2x.png',
-                            createInnerChild = '';
+                            getDailyWeatherIcon = 'https://openweathermap.org/img/wn/' + dailyWeatherConditionIcon + '@2x.png';
                         todayDate.setDate(todayDate.getDate() + 1);
 
-                        createInnerChild = `
+                        let createInnerChild = `
                         <div id = "card-${weekDayName}" class= "carousel-item ${todayDate.getDate() === dailyDate.getDate() ? 'active' : ''} list-card">
                         <div class="show-center">
     
@@ -106,7 +110,7 @@ function showPosition(position) {
                         </div> 
     
                         <div>
-                        <span><img src= "${getDailyWeatherIcon}" class="icon-daily-weathers"></span>
+                        <span><img src= "${getDailyWeatherIcon}" class="icon-daily-weathers" alt="weather-icon-${getDailyWeatherIcon}"></span>
                         <span class ="daily-weather-condition">${dailyWeatherCondition}</span>
                         </div> 
     

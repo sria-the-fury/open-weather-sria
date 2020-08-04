@@ -19,7 +19,7 @@ searchInput.addEventListener('keyup', function () {
 
                 data.forEach((getData) => {
 
-                    let displayName = getData.display_name;
+                    let displayName = getData.display_name,
                         eachCountryInfo = {
                             placeName: displayName,
                             latitude: getData.lat,
@@ -49,7 +49,7 @@ searchInput.addEventListener('keyup', function () {
                     suggestionsInnerDiv.setAttribute("data-placeName", areaName);
                     suggestionsInnerDiv.setAttribute("data-lat", suggested.latitude);
                     suggestionsInnerDiv.setAttribute("data-lon", suggested.longitude);
-                    let giveIt2Inpt = suggestionsInnerDiv.innerHTML = suggested.placeName;
+                    let giveIt2Input = suggestionsInnerDiv.innerHTML = suggested.placeName;
                     let a = suggestionsPanel.appendChild(suggestionsInnerDiv);
                     a.addEventListener('click', function giveValues() {
                         let getLat = a.getAttribute('data-lat'),
@@ -58,7 +58,7 @@ searchInput.addEventListener('keyup', function () {
 
 
 
-                        searchInput.value = giveIt2Inpt;
+                        searchInput.value = giveIt2Input;
                         suggestionsPanel.innerHTML = '';
 
 
@@ -72,6 +72,7 @@ searchInput.addEventListener('keyup', function () {
                             showHumidity = document.querySelector(".humidity-percent"),
                             showPressure = document.querySelector(".pressure-level"),
                             showWind = document.querySelector(".wind-level"),
+                            showUVI = document.querySelector(".uvi-index"),
                             showConditionDesc = document.querySelector('.condition-desc'),
                             showConditionIcon = document.querySelector(".condition-icon"),
                             showSearchLabel = document.querySelector(".location-name-label"),
@@ -128,6 +129,7 @@ searchInput.addEventListener('keyup', function () {
                                 showHumidity.innerHTML = weatherInfo.current.humidity + "%";
                                 showPressure.innerHTML = convertPressure.toFixed(1) + " inHg";
                                 showWind.innerHTML = convertWindSpeed2Kmh.toFixed(1) + " km/h";
+                                showUVI.innerHTML = weatherInfo.current.uvi;
                                 showConditionIcon.setAttribute("src", getUrlIcon);
 
 
@@ -150,11 +152,10 @@ searchInput.addEventListener('keyup', function () {
                                         dailyDate = new Date(daily.dt * 1000),
                                         date = dailyDate.getDate() + " " + monthName[dailyDate.getMonth()],
                                         weekDayName = getDayName[dailyDate.getDay()],
-                                        getDailyWeatherIcon = 'https://openweathermap.org/img/wn/' + dailyWeatherConditionIcon + '@2x.png',
-                                        createInnerChild = '';
+                                        getDailyWeatherIcon = 'https://openweathermap.org/img/wn/' + dailyWeatherConditionIcon + '@2x.png';
                                     todayDate.setDate(todayDate.getDate() + 1);// assign todayDate as tomorrowDate
 
-                                    createInnerChild = `
+                                   let createInnerChild = `
                                         <div id = "card-${weekDayName}" class= "carousel-item ${todayDate.getDate() === dailyDate.getDate() ? 'active' : ''} list-card">
                                         <div class="show-center">
                     
@@ -164,7 +165,7 @@ searchInput.addEventListener('keyup', function () {
                                         </div> 
                     
                                         <div>
-                                        <span><img src= "${getDailyWeatherIcon}" class="icon-daily-weathers"></span>
+                                        <span><img src= "${getDailyWeatherIcon}" class="icon-daily-weathers" alt="weather-icon-${getDailyWeatherIcon}"></span>
                                         <span class ="daily-weather-condition">${dailyWeatherCondition}</span>
                                         </div> 
                     
