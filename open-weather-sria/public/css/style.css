@@ -62,7 +62,7 @@ html,body{
 
 }
 
-.humidity-percent, .pressure-level, .cloudiness-persent, .wind-level{
+.humidity-percent, .pressure-level, .cloudiness-persent, .wind-level, .uvi-index{
     color: white;
 }
 
@@ -265,3 +265,6 @@ input[type=search]::-webkit-search-cancel-button {
     color: #564545;
 }
 
+.local-time-label{
+    margin-left:-40px;
+}
