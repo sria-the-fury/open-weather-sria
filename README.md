@@ -2,7 +2,7 @@
 A personal small project. A Little bit curiosity how the openWeatherMap API works. 
 
 ## **Using :**
-- HTML5,CSS, Bootstrap and pure JavaScript.
+- HTML5, CSS, Bootstrap and pure JavaScript.
 - automatic geolocation by device GPS.
 - **Locationiq** API for Reverse geocoding and Forward geocoding.
 - **OpenWeatherMap** API for getting weather info of a specific area by latitude and longitude.
@@ -14,6 +14,7 @@ A personal small project. A Little bit curiosity how the openWeatherMap API work
 - Upcoming seven days weather forecast.
 - Search by place name.
 - Search shows suggestions.
+- Installable Web App for cross platform.
 - Good design ( fully designed by the author ).
 
 ## **Hosting**

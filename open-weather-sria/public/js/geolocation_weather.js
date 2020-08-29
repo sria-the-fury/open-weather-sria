@@ -12,7 +12,10 @@ let locationNameShow = document.querySelector(".location-name"),
     showConditionIcon = document.querySelector(".condition-icon"),
     showConditionDesc = document.querySelector('.condition-desc'),
     monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-    getDayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    getDayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    getDetailsRowColOne = document.querySelector(".weather-conditions-name"),
+    getDetailsRowColTwo = document.querySelector(".weather-details"),
+    loadingText = document.querySelector(".weather-details-col");
 
 if (navigator.geolocation) navigator.geolocation.getCurrentPosition(showPosition);
 else locationNameShow.innerHTML = 'Give Location Access';
@@ -25,8 +28,6 @@ function showPosition(position) {
         .then(response => response.json())
         .then(data => {
 
-            console.log("Data=>",data);
-
             let districtName = data.address.state_district.split(' '),
                 LocationName = data.address.neighbourhood ? data.address.neighbourhood : districtName[0],
                 stateName = data.address.state.split(' '),
@@ -38,7 +39,8 @@ function showPosition(position) {
             fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=' + longitude + '&units=metric&appid=42f55767c7bb1cbd240aeefce58a66e6')
                 .then(response => response.json())
                 .then(weatherInfo => {
-                    console.log("weatherInfo=>",weatherInfo);
+
+                    loadingText.style.display = 'none';
 
                     let getSunRiseData = new Date((weatherInfo.current.sunrise) * 1000),
                         getSunSetData = new Date((weatherInfo.current.sunset) * 1000),
@@ -51,7 +53,8 @@ function showPosition(position) {
                         getWeatherDescString = weatherInfo.current.weather[0].description.toLowerCase(),
                         compareTwoCondition = getWeatherMainString.localeCompare(getWeatherDescString);
 
-
+                    getDetailsRowColOne.style.display = 'block';
+                    getDetailsRowColTwo.style.display = 'block';
                     showTempDegree.innerHTML = weatherInfo.current.temp + "° C";
                     showTempCondition.innerHTML = weatherInfo.current.weather[0].main;
                     if (compareTwoCondition !== 0) {
@@ -136,22 +139,3 @@ function showPosition(position) {
         });
 
 }
-
-
-
-
-
-
-
-
-
-    //AIzaSyBPc6ChjlMDrXYbsPxZD37a-mocaZ9gQqc
-
-   // https://maps.googleapis.com/maps/api/geocode/json?latlng=23.71,90.41&key=AIzaSyBPc6ChjlMDrXYbsPxZD37a-mocaZ9gQqc
-
-   //https://us1.locationiq.com/v1/reverse.php?key=51b1b23250a6fb&lat=24.385837&lon=91.4126358&format=json
-   //24.385837,91.4126358
-
-  // https://us1.locationiq.com/v1/reverse.php?key=51b1b23250a6fb&lat='+latitude+'1&lon='+longitude+'&format=json'
-
-  //https://us1.locationiq.com/v1/search.php?key=51b1b23250a6fb&q=habiganj&format=json

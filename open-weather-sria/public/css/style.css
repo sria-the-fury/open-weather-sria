@@ -98,6 +98,7 @@ html,body{
 .weather-details{
     margin-top: 10px;
     margin-right: -10px !important;
+    display: none;
 
 }
 
@@ -267,4 +268,13 @@ input[type=search]::-webkit-search-cancel-button {
 
 .local-time-label{
     margin-left:-40px;
+}
+
+
+.weather-conditions-name{
+    display: none;
+}
+.loading-weather{
+    text-align: center;
+    margin-top: 20px;
 }

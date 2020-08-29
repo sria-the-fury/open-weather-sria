@@ -11,8 +11,12 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="fontEllo/css/fontello.css" type="text/css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-96x96.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#a8a8a8">
+    <meta name="theme-color" content="#3f3f3f">
 
-    <title>Open weather App by SRIA</title>
+    <title>Open Weather APP by SRIA</title>
 </head>
 
 <body>
@@ -53,29 +57,36 @@
         </div>
     </div>
     <div class="row weather-info-details line">
+        <div class="col-12 weather-details-col">
+            <h4 class="loading-weather">Loading Weather Details</h4>
+
+        </div>
 
         <div class="col-6">
             <div class="weather-conditions-name">
-                <div class="weather-conditions">
-                    <img class="condition-icon">
-                    <span class="condition-name"></span>
-                    <div class="condition-desc"></div>
+                <div >
+                    <div class="weather-conditions">
+                        <img class="condition-icon" alt="condition icon">
+                        <span class="condition-name"></span>
+                        <div class="condition-desc"></div>
+
+                    </div>
+
+                    <span class="today-temp"></span><span class="feels-like"></span>
+                </div>
+                <div class="sun-rise-set">
+                    <span class="sun-rise-label"><i class="icon-sunrise"></i>Sunrise : </span>
+                    <span class="sun-rise"></span>
+
+                    <div>
+                        <span class="sun-set-label"><i class="icon-sun-set"></i>Sunset : </span>
+                        <span class="sun-set"></span>
+
+                    </div>
 
                 </div>
-
-                <span class="today-temp"></span><span class="feels-like"></span>
             </div>
-            <div class="sun-rise-set">
-                <span class="sun-rise-label"><i class="icon-sunrise"></i>Sunrise : </span>
-                <span class="sun-rise"></span>
 
-                <div>
-                    <span class="sun-set-label"><i class="icon-sun-set"></i>Sunset : </span>
-                    <span class="sun-set"></span>
-
-                </div>
-
-            </div>
         </div>
         <div class="col-6">
             <div class="weather-details">
@@ -104,6 +115,7 @@
             </div>
 
         </div>
+
     </div>
 
     <div class="row next-eight-days-weather-info line">
@@ -139,7 +151,7 @@
                 <div style="text-align: center;">
                     developed-by :
                 </div>
-                <a href="https://github.com/sria-the-fury" class="label-capsule" target="_blank">sria-the-fury</a>
+                <a href="https://github.com/sria-the-fury" rel="noopener" class="label-capsule" target="_blank">sria-the-fury</a>
 
             </div>
         </div>
@@ -148,7 +160,7 @@
                 <div style="text-align: center;">
                     weather provider :
                 </div>
-                <a href="https://openweathermap.org/" class="label-capsule" target="_blank">OpenWeather</a>
+                <a href="https://openweathermap.org/" rel="noopener" class="label-capsule" target="_blank">OpenWeather</a>
             </div>
 
         </div>
@@ -174,6 +186,7 @@
 <script src="js/index.js"></script>
 <script src="js/geolocation_weather.js"></script>
 <script src="js/search_weather.js"></script>
+<script src="js/app.js"></script>
 
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->

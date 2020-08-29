@@ -77,7 +77,10 @@ searchInput.addEventListener('keyup', function () {
                             showConditionIcon = document.querySelector(".condition-icon"),
                             showSearchLabel = document.querySelector(".location-name-label"),
                             monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-                            getDayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                            getDayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                            getDetailsRowColOne = document.querySelector(".weather-conditions-name"),
+                            getDetailsRowColTwo = document.querySelector(".weather-details"),
+                            loadingText = document.querySelector(".weather-details-col");
 
 
                         locationNameShow.innerHTML = getPlaceName;
@@ -87,6 +90,8 @@ searchInput.addEventListener('keyup', function () {
                         fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + getLat + '&lon=' + getLon + '&units=metric&appid=42f55767c7bb1cbd240aeefce58a66e6')
                             .then(response => response.json())
                             .then(weatherInfo => {
+
+                                loadingText.style.display = 'none';
 
                                 let getSunRiseData = new Date((weatherInfo.current.sunrise) * 1000),
                                     getSunSetData = new Date((weatherInfo.current.sunset) * 1000),
@@ -98,19 +103,11 @@ searchInput.addEventListener('keyup', function () {
                                     getWeatherDescString = weatherInfo.current.weather[0].description.toLowerCase(),
                                     compareTwoCondition = getWeatherMainString.localeCompare(getWeatherDescString),
                                     getSunRiseTime = getSunRiseData.toLocaleString('en-US', {timeZone: weatherInfo.timezone, hour: 'numeric', minute: 'numeric', hour12: true}),
-                                    getSunSetTime = getSunSetData.toLocaleString('en-US', {timeZone: weatherInfo.timezone, hour: 'numeric', minute: 'numeric', hour12: true}),
-
-                                    dateShowDiv = document.querySelector(".today-date"),
-                                    todayNameShow = document.querySelector(".today-name"),
-                                    currentDate = new Date(),
-                                    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-                                    dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                                    getSunSetTime = getSunSetData.toLocaleString('en-US', {timeZone: weatherInfo.timezone, hour: 'numeric', minute: 'numeric', hour12: true});
 
 
-                                dateShowDiv.innerHTML = currentDate.getUTCDate()+" "+ months[currentDate.getUTCMonth()]+ " " + currentDate.getUTCFullYear();
-                                todayNameShow.innerHTML = "( "+dayName[currentDate.getUTCDay()]+ " )";
-
-
+                                getDetailsRowColOne.style.display = 'block';
+                                getDetailsRowColTwo.style.display = 'block';
                                 showTempDegree.innerHTML = weatherInfo.current.temp + "° C";
                                 showTempCondition.innerHTML = weatherInfo.current.weather[0].main;
                                 if (compareTwoCondition !== 0) {
