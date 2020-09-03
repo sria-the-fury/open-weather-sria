@@ -1,2 +1,8 @@
 
 .idea/workspace.xml
+
+*.cache
+
+.idea/codeStyles/
+
+open-weather-sria/.firebase/

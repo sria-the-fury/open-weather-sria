@@ -135,9 +135,11 @@ searchInput.addEventListener('keyup', function () {
                                 //next eight days weather forecast
 
                                 let showWeatherForNextDays = document.querySelector(".weather-next-days"),
+                                    showUpComingArea = document.querySelector('.next-eight-days-weather-info'),
                                     createInnerChildValue = '';
 
                                 weatherInfo.daily.shift();// remove the first index of array
+                                showUpComingArea.style.display = "block";
 
                                 weatherInfo.daily.forEach(daily => {
                                     let dailyTempMin = daily.temp.min,
