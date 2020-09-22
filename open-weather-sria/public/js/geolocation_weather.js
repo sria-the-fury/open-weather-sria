@@ -27,13 +27,10 @@ function showPosition(position) {
     fetch('https://us1.locationiq.com/v1/reverse.php?key=51b1b23250a6fb&lat=' + latitude + '1&lon=' + longitude + '&format=json')
         .then(response => response.json())
         .then(data => {
+            console.log("Data=>",data.display_name);
 
-            let districtName = data.address.state_district.split(' '),
-                LocationName = data.address.neighbourhood ? data.address.neighbourhood : districtName[0],
-                stateName = data.address.state.split(' '),
-                countryName = data.address.country,
-                countryOrDistrict = districtName[0] === stateName[0] && data.address.neighbourhood ? stateName[0] : countryName;
-            locationNameShow.innerHTML = LocationName + ", " + countryOrDistrict;
+            let currentLocationName = data.display_name;
+            locationNameShow.innerHTML = currentLocationName;
 
 
             fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=' + longitude + '&units=metric&appid=42f55767c7bb1cbd240aeefce58a66e6')
